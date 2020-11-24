@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: elasticsearch
+  namespace: es
+spec:
+  tls:
+    - secretName: 192-168-99-100-nip-io-tls
+      hosts: 
+        - '*.192.168.99.100.nip.io'      
+  rules:
+    - host: elasticsearch.192.168.99.100.nip.io
+      http:
+        paths:
+          - backend:
+              serviceName: elasticsearch-client
+              servicePort: 9200

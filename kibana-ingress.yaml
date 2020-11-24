@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kibana
+  namespace: kibana
+spec:
+  tls:
+    - secretName: 192-168-99-100-nip-io-tls
+      hosts: 
+        - '*.192.168.99.100.nip.io'      
+  rules:
+    - host: minikube.192.168.99.100.nip.io
+      http:
+        paths:
+          - backend:
+              serviceName: kibana
+              servicePort: 5601
