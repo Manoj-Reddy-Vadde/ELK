@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: kibana
+  name: kibana-config
+  labels:
+    app: kibana
+data:
+  kibana.yml: |-
+    server.host: 0.0.0.0
+    elasticsearch:
+      hosts: ${ELASTICSEARCH_URL}
+      username: ${ELASTICSEARCH_USER}
+      password: ${ELASTICSEARCH_PASSWORD}
+    server.ssl.enabled: true
+    server.ssl.certificate: /usr/share/kibana/config/tls.crt
+    server.ssl.key: /usr/share/kibana/config/tls.key
+  tls.crt: |-
+    -----BEGIN CERTIFICATE-----
+    MIIDSTCCAjGgAwIBAgIUQdxn194LOdagYNzEYyC/72dObuUwDQYJKoZIhvcNAQEL
+    BQAwNDEyMDAGA1UEAxMpRWxhc3RpYyBDZXJ0aWZpY2F0ZSBUb29sIEF1dG9nZW5l
+    cmF0ZWQgQ0EwHhcNMjAwOTA3MTIxOTM2WhcNMjMwOTA3MTIxOTM2WjA0MTIwMAYD
+    VQQDEylFbGFzdGljIENlcnRpZmljYXRlIFRvb2wgQXV0b2dlbmVyYXRlZCBDQTCC
+    ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJZFVHpzXIRGvEU/+NsJ/3rC
+    WPeIRPm0Ypfah+GkYoUZZRKUcP4DOvApYXEDGA5Bxv8eU4TW1sYhNjATRdNc+lm4
+    XeM4AStFZXr2idhY1Yq4kHj0e7opmo1idWPyQqt2Mgq7xvnUz2eq6prY1cIZspGp
+    /P8Fq/2maDzzV+zETUQ7XJc4AAKQ2JSn269UlcJHCdeNz8Llf4/oaREaZKcpCHoQ
+    hAajvlu3NGdWUnbnsQEUiwkIhqA/IDzj9Gz9FtbDWjfyTheNVsElJnYZT0IEpPF0
+    41re7GDOzrHHLkmnAFqJ1gcLExTH5kwyzUBso+aSGQfRPRvLmOV+qCs+kP4+8f8C
+    AwEAAaNTMFEwHQYDVR0OBBYEFB8Q1URhrSteNyTJkG9+duW1qI48MB8GA1UdIwQY
+    MBaAFB8Q1URhrSteNyTJkG9+duW1qI48MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZI
+    hvcNAQELBQADggEBAFaHBI1ty4/Xjra7O3+4ER0RGdw3QIMtnNxTXuLWQTiKGTjx
+    OnaK9SaxsBi21HukBINga3rzN+hTSVwytNSuIcIpEvMtWZ6wS4RAe8rdS8mu7fzi
+    LT/5HGd59FQOikx0Q4qy+X4rFNoRe8Wx5nVLGN5dPtbIxSk8DlQN1y1NELbv4m7z
+    plm12XGv42/GLjRNgZNdxf7AtDCXrAa1w/1QgWpKoJzip92syN5yaiyBkETew0Yr
+    BugdZy+N099OUOf9fi18J/C5xVvtfLbN8C4X3EyoluURHLJuuhdJMCrSwrbXatbG
+    v3XFTPWENIM9dIZbnU+CCFIZbvamBpMy/U58bpo=
+    -----END CERTIFICATE-----
+  tls.key: |-
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEowIBAAKCAQEAlkVUenNchEa8RT/42wn/esJY94hE+bRil9qH4aRihRllEpRw
+    /gM68ClhcQMYDkHG/x5ThNbWxiE2MBNF01z6Wbhd4zgBK0VlevaJ2FjViriQePR7
+    uimajWJ1Y/JCq3YyCrvG+dTPZ6rqmtjVwhmykan8/wWr/aZoPPNX7MRNRDtclzgA
+    ApDYlKfbr1SVwkcJ143PwuV/j+hpERpkpykIehCEBqO+W7c0Z1ZSduexARSLCQiG
+    oD8gPOP0bP0W1sNaN/JOF41WwSUmdhlPQgSk8XTjWt7sYM7OsccuSacAWonWBwsT
+    FMfmTDLNQGyj5pIZB9E9G8uY5X6oKz6Q/j7x/wIDAQABAoIBABT93F46rUrhIr29
+    wQLAM8svSQRTKeeD9l3mLiMsNoMHWCIvUFV7mAkijrUdzId5UtYio2IkLN6ClzJC
+    DvgGvgY4hg0OrsMfr5xswjbRugrl23C6HmqUEz366hErL3sKSNVNA++0dcCylJFL
+    BxlVQ6erimcJoMwPKfKRv8+YYH7OYThFuV1a2Z3SDlJwVzuAl9AZ8GE6Ugj2SuIp
+    k3ZWbcSITPMYw4wPHmzo4+bNvv4ulEhhMBtKcR81t0VjU0Bw2XxORVApnaybDHLY
+    yZ6G6qjB2vX5zQWrrTXKq4vGm/6rUlAS5brI0jogQvAk9HHIkklhBhuzbRE1Bige
+    Y7UqdFECgYEAzNdPfYpRki3za9EGjC8ga1Ukgq40hr/u0JIlJ7GiATFuZoQQgwrb
+    8DpGiqKahqdmR//6yqDTW5jxMyrlevq1SiU/YppPG+Ckp+bSfyLv5h2TrE7+mceh
+    zpahiE86LmE9+9EyJ5LkVyzwTGyCQIpenbk5iQbataTsGKW8p5tpVWkCgYEAu80G
+    Pou0DHiqiL3SSHCQ0DU9ozrQJKZ4DE4tibEMqPdQutiRpdTSlZM6pyY26aVxrmn1
+    s18trdUci8Mm8UrswtXUoDN6omOnzwMCH4bytZvpY1gjPOLPd81NQyUeufIoLBo9
+    +7TvBgWMWfK0p65FizD4oxaMQX9RkJSCHL0ClycCgYA5ORzXsUBAWd3ajLYLi06/
+    LTXZ29iInC2WznzareDX/Hse4F3MfcgbP+xc5jfMzg7gpj3lRTBGMl+PL7iTtl3W
+    rLkcTocy/nqA/RZotdXWrwSF6jttsjsdfy746UkTk87A/hvIulxXjhJDBz0L0pvD
+    6+6KvQN0IvJhoEsnd17hoQKBgH6HfSyIvY8lgWhN1C7gQIE3Tcb7Kh93VSydQ4sg
+    kXIJ5wdsQH0lLZh/MKZLVfYHdNdZJqRqfQFAs1Hq8wLhQzFmFjK1XGuqjvYnhbeu
+    GTqIyC8Zw+wSuEt0NBkIGnKXl79XEunSlrRM6qnznwnWnZ5RKUPgPjEm0dKCbENm
+    iSdDAoGBALSMCSbDn8tRRZSENqTLqIVEELx90IVJVFFMUZcDu0UyYpVXUQzoYyPm
+    2nyx4szDXEclMEF4gcuXVxsfuKVUykh0Q8OwxVPXgFVWTeYyVsklZjrQGHvbhs7Z
+    7wJP3+r/67HjAiZY+AiNe445DymSA+nzgPpIWtpIXqIOEORBtoSa
+    -----END RSA PRIVATE KEY-----            
+
